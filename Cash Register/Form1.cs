@@ -42,6 +42,7 @@ namespace Cash_Register
 
         private void TotalButton_Click(object sender, EventArgs e)
         {
+            //these are my inputs for number of choices of food as well as my fail safe for if something other than numbers are imputed
             try
             {
                 errorLabel.Text = "";
@@ -74,6 +75,7 @@ namespace Cash_Register
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
+            //this calculates the change for how much you have paid as well as include the frail safe
             try
             {
                 errorLabel.Text = "";
@@ -92,6 +94,7 @@ namespace Cash_Register
 
         private void ReciptButton_Click(object sender, EventArgs e)
         {
+            //this is the printing process. this is just a matter of getting the correct information to show up in the right parts of the screen. this also includes the printing sound
 
             SoundPlayer reciptSound = new SoundPlayer(Properties.Resources._345056__azumarill__epson_receipt_printer3__1_);
             reciptSound.Play();
@@ -182,6 +185,8 @@ namespace Cash_Register
 
         private void NewOrderButton_Click(object sender, EventArgs e)
         {
+            //this code gets the recipt cleared and ready for a new order. this icludes wiping the text as well as setting all the variables bac to zero so you cant clear the recipt and print the exact same one
+
             reciptOutputLabel.Text = "";
             itemNumberOutputLabel.Text = "";
             reciptPriceOutputLabel.Text = "";
