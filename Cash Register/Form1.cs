@@ -44,6 +44,7 @@ namespace Cash_Register
         {
             try
             {
+                errorLabel.Text = "";
                 
                 burgerNumber = Convert.ToInt32(burgerInput.Text);
                 frieNumber = Convert.ToInt32(frieInput.Text);
@@ -75,6 +76,7 @@ namespace Cash_Register
         {
             try
             {
+                errorLabel.Text = "";
 
                 tendered = Convert.ToInt32(tenderedInput.Text);
 
