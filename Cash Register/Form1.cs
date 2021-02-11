@@ -185,7 +185,7 @@ namespace Cash_Register
 
         private void NewOrderButton_Click(object sender, EventArgs e)
         {
-            //this code gets the recipt cleared and ready for a new order. this icludes wiping the text as well as setting all the variables bac to zero so you cant clear the recipt and print the exact same one
+            //this code gets the recipt cleared and ready for a new order. this icludes wiping the text as well as setting all the variables back to zero so you cant clear the recipt and print the exact same one
 
             reciptOutputLabel.Text = "";
             itemNumberOutputLabel.Text = "";
