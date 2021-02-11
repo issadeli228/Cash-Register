@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
 
 namespace Cash_Register
 {
@@ -28,7 +29,11 @@ namespace Cash_Register
         double totalPrice;
         double tendered;
         double change;
-        
+        double totalBurgerPrice;
+        double totalFriePrice;
+        double totalDrinkPrice;
+
+
 
         public Form1()
         {
@@ -62,7 +67,7 @@ namespace Cash_Register
             }
             catch
             {
-                reciptOutputLabel.Text = $"Please input whole number choices";
+                errorLabel.Text = $"Please input whole number choices";
             }
         }
 
@@ -78,19 +83,34 @@ namespace Cash_Register
             }
             catch
             {
-                reciptOutputLabel.Text = $"Please input a correct amount for tendered";
+                errorLabel.Text = $"Please input a correct amount for tendered";
             }
                 
         }
 
         private void ReciptButton_Click(object sender, EventArgs e)
         {
+
+            SoundPlayer reciptSound = new SoundPlayer(Properties.Resources._345056__azumarill__epson_receipt_printer3__1_);
+            reciptSound.Play();
+
+            reciptOutputLabel.Text = "";
+            itemNumberOutputLabel.Text = "";
+            reciptPriceOutputLabel.Text = "";
+            errorLabel.Text = "";
+
+            totalBurgerPrice = burgerNumber * burgerPrice;
+            totalFriePrice = frieNumber * friePrice;
+            totalDrinkPrice = drinkNumber * drinkPrice;
+
+            errorLabel.Text = $"";
+
             nameLabel.Visible = true;
 
             Refresh();
             Thread.Sleep(500);
 
-            reciptOutputLabel.Text += $"\n\n\nOrder Number 1024";
+            reciptOutputLabel.Text += $"Order Number 1024";
 
             Refresh();
             Thread.Sleep(500);
@@ -100,8 +120,93 @@ namespace Cash_Register
             Refresh();
             Thread.Sleep(500);
 
-            reciptOutputLabel.Text += $"\n\nBurgers x{burgerNumber} @ {burgerNumber * burgerPrice.ToString("c")}";
-            
+            reciptOutputLabel.Text += $"\n\nBurgers";
+            itemNumberOutputLabel.Text += $"\n\n\nx{burgerNumber}";
+            reciptPriceOutputLabel.Text += $"\n\n\n{totalBurgerPrice.ToString("c")}";
+
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\nFries";
+            itemNumberOutputLabel.Text += $"\nx{frieNumber}";
+            reciptPriceOutputLabel.Text += $"\n{totalFriePrice.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\nDrinks";
+            itemNumberOutputLabel.Text += $"\nx{drinkNumber}";
+            reciptPriceOutputLabel.Text += $"\n{totalDrinkPrice.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\n\nsubtotal:";
+            reciptPriceOutputLabel.Text += $"\n\n{subTotalPrice.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\nTax:";
+            reciptPriceOutputLabel.Text += $"\n  {taxAmount.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\nTotal:";
+            reciptPriceOutputLabel.Text += $"\n{totalPrice.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\n\nTendered";
+            reciptPriceOutputLabel.Text += $"\n\n{tendered.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\nChange";
+            reciptPriceOutputLabel.Text += $"\n{change.ToString("c")}";
+
+            Refresh();
+            Thread.Sleep(500);
+
+            reciptOutputLabel.Text += $"\n\nSee You Soon!";
+
+
+
+        }
+
+        private void NewOrderButton_Click(object sender, EventArgs e)
+        {
+            reciptOutputLabel.Text = "";
+            itemNumberOutputLabel.Text = "";
+            reciptPriceOutputLabel.Text = "";
+            errorLabel.Text = "";
+            nameLabel.Visible = false;
+
+            burgerInput.Text = "";
+            frieInput.Text = "";
+            drinkInput.Text = "";
+
+            subTotalOutputLabel.Text = "";
+            taxOutputLabel.Text = "";
+            totalOutputLabel.Text = "";
+
+            tenderedInput.Text = "";
+            changeOutputLabel.Text = "";
+
+            burgerNumber = 0;
+            frieNumber = 0;
+            drinkNumber = 0;
+
+            subTotalPrice = 0;
+            taxAmount = 0;
+            totalPrice = 0;
+
+            tendered = 0;
+            change = 0;
 
         }
     }

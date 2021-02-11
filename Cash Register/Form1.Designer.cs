@@ -49,16 +49,19 @@
             this.taxOutputLabel = new System.Windows.Forms.Label();
             this.totalOutputLabel = new System.Windows.Forms.Label();
             this.changeOutputLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newOrderButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.reciptPriceOutputLabel = new System.Windows.Forms.Label();
+            this.errorLabel = new System.Windows.Forms.Label();
+            this.itemNumberOutputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 47);
+            this.label1.Location = new System.Drawing.Point(79, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 20);
             this.label1.TabIndex = 0;
@@ -68,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(81, 82);
+            this.label2.Location = new System.Drawing.Point(79, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 1;
@@ -78,7 +81,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(81, 118);
+            this.label3.Location = new System.Drawing.Point(79, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 20);
             this.label3.TabIndex = 2;
@@ -122,9 +125,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(81, 202);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 20);
+            this.label4.Size = new System.Drawing.Size(73, 20);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Sub Total:";
+            this.label4.Text = "Subtotal:";
             // 
             // label5
             // 
@@ -208,9 +211,9 @@
             // 
             this.reciptOutputLabel.BackColor = System.Drawing.Color.White;
             this.reciptOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reciptOutputLabel.Location = new System.Drawing.Point(345, 47);
+            this.reciptOutputLabel.Location = new System.Drawing.Point(345, 118);
             this.reciptOutputLabel.Name = "reciptOutputLabel";
-            this.reciptOutputLabel.Size = new System.Drawing.Size(282, 369);
+            this.reciptOutputLabel.Size = new System.Drawing.Size(129, 298);
             this.reciptOutputLabel.TabIndex = 16;
             // 
             // subTotalOutputLabel
@@ -249,15 +252,16 @@
             this.changeOutputLabel.Size = new System.Drawing.Size(63, 20);
             this.changeOutputLabel.TabIndex = 20;
             // 
-            // button1
+            // newOrderButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(345, 427);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(282, 38);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "New Order";
-            this.button1.UseVisualStyleBackColor = true;
+            this.newOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newOrderButton.Location = new System.Drawing.Point(345, 427);
+            this.newOrderButton.Name = "newOrderButton";
+            this.newOrderButton.Size = new System.Drawing.Size(282, 38);
+            this.newOrderButton.TabIndex = 21;
+            this.newOrderButton.Text = "New Order";
+            this.newOrderButton.UseVisualStyleBackColor = true;
+            this.newOrderButton.Click += new System.EventHandler(this.NewOrderButton_Click);
             // 
             // label10
             // 
@@ -274,7 +278,7 @@
             // 
             this.nameLabel.BackColor = System.Drawing.Color.White;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(383, 61);
+            this.nameLabel.Location = new System.Drawing.Point(386, 76);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(202, 26);
             this.nameLabel.TabIndex = 23;
@@ -282,14 +286,45 @@
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.nameLabel.Visible = false;
             // 
+            // reciptPriceOutputLabel
+            // 
+            this.reciptPriceOutputLabel.BackColor = System.Drawing.Color.White;
+            this.reciptPriceOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reciptPriceOutputLabel.Location = new System.Drawing.Point(552, 118);
+            this.reciptPriceOutputLabel.Name = "reciptPriceOutputLabel";
+            this.reciptPriceOutputLabel.Size = new System.Drawing.Size(75, 298);
+            this.reciptPriceOutputLabel.TabIndex = 24;
+            this.reciptPriceOutputLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.BackColor = System.Drawing.Color.White;
+            this.errorLabel.Location = new System.Drawing.Point(345, 52);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(282, 69);
+            this.errorLabel.TabIndex = 25;
+            // 
+            // itemNumberOutputLabel
+            // 
+            this.itemNumberOutputLabel.BackColor = System.Drawing.Color.White;
+            this.itemNumberOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemNumberOutputLabel.Location = new System.Drawing.Point(467, 118);
+            this.itemNumberOutputLabel.Name = "itemNumberOutputLabel";
+            this.itemNumberOutputLabel.Size = new System.Drawing.Size(90, 298);
+            this.itemNumberOutputLabel.TabIndex = 26;
+            this.itemNumberOutputLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 477);
+            this.Controls.Add(this.itemNumberOutputLabel);
             this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.errorLabel);
+            this.Controls.Add(this.reciptPriceOutputLabel);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.newOrderButton);
             this.Controls.Add(this.changeOutputLabel);
             this.Controls.Add(this.totalOutputLabel);
             this.Controls.Add(this.taxOutputLabel);
@@ -341,9 +376,12 @@
         private System.Windows.Forms.Label taxOutputLabel;
         private System.Windows.Forms.Label totalOutputLabel;
         private System.Windows.Forms.Label changeOutputLabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newOrderButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label reciptPriceOutputLabel;
+        private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Label itemNumberOutputLabel;
     }
 }
 
